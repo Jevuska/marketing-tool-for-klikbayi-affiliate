@@ -4,14 +4,14 @@ Donate link: http://www.jevuska.com/contact/
 Tags: widget, shortcode, sidebar, form, klikbayi, affiliate, order, onlineshop, kid, children, book, popup, marketing
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Marketing plugin for KlikBayi affiliate. The easy way to selling klikbayi.com's product.
 
 == Description ==
-Marketing Tool for KlikBayi Affiliate plugin is created to support http://klikbayi.com/ affiliaters to selling klikbayi.com's product with embeded form or button order into Wordpress site. Settings configuration, Widget, Shortcode, and PHP Code for theme is available.
+**Marketing Tool for KlikBayi Affiliate** plugin is created to support http://klikbayi.com/ affiliaters to selling klikbayi.com's product with embeded form or button order into Wordpress site. Settings configuration, Widget, Shortcode, and PHP Code for theme is available.
 
 == Installation ==
 1. Upload plugin zip contents to `wp-contents/plugin` directory and activate the plugin.
@@ -29,6 +29,9 @@ This plugin show the tool feature that embeded into your site automatically, and
 3. KlikBayi Widget.
 
 == Changelog ==
+* 1.0.1 = October 26, 2015
+ * Fix translation Bahasa Indonesia
+ 
 * 1.0.0 = October 23, 2015
  * First official release!
 

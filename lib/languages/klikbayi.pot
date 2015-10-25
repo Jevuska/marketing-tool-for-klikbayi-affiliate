@@ -1,10 +1,10 @@
-# Copyright (C) 2015 ...
+# Copyright (C) 2015 JEVUSKA
 # This file is distributed under the GNU General Public License v3.
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Klik Bayi v1.0.0\n"
-"POT-Creation-Date: 2015-10-25 10:58+0800\n"
+"Project-Id-Version: Klik Bayi v1.0.1\n"
+"POT-Creation-Date: 2015-10-26 06:00+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klik Bayi <contact@klikbayi.com>\n"
 "Language-Team: Klik Bayi <contact@klikbayi.com>\n"
@@ -42,299 +42,306 @@ msgstr ""
 msgid "Affiliate Login"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:115
+#: inc/class/class-klikbayi-admin.php:113
 msgid "Overview"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:116
+#: inc/class/class-klikbayi-admin.php:114
 msgid ""
 "This plugin is especially designed to give KlikBayi.com&#39;s affiliates freedom to place the order button/form order (with its "
-"affiliate ID included) so the customer can order from their wordpress blog directly and they don&#39;t need to open KlikBayi."
-"com main site anymore.<br>There are many option to place the order button/ form order from single/specific post to widget "
-"sidebar. Just make sure you give the necessary description needed for KlikBayi.com product&#39;s."
+"affiliate ID included) so the customer can order from their wordpress blog directly and they don&#39;t need to open KlikBayi.com "
+"main site anymore.<br>There are many option to place the order button/ form order from single/specific post to widget sidebar. "
+"Just make sure you give the necessary description needed for KlikBayi.com product&#39;s."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:119
+#: inc/class/class-klikbayi-admin.php:117
 msgid "Troubleshooting"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:120
+#: inc/class/class-klikbayi-admin.php:118
 msgid "If you get an error, try to deactivate or uninstall the plugin and activate it again."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:123
+#: inc/class/class-klikbayi-admin.php:121
 msgid "FAQ"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:125
+#: inc/class/class-klikbayi-admin.php:123
 msgid ""
 "<h4>How do I setup my WordPress theme to work with Klik Bayi plugin?</h4><p>You can use php code <code>&lt;?php do_action(&#39;"
 "klikbayi&#39;); ?&gt;</code> and add this single line code after the_content code. Single or sitewide pages is welcome. More "
 "advance code is available.</p>"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:156
-msgid "Marketing plugin for KlikBayi affilate. The killers plugin for KlikBayi.com&#39;s product."
+#: inc/class/class-klikbayi-admin.php:136 inc/class/class-klikbayi-admin.php:160
+msgid "Marketing Tool for KlikBayi Affiliate"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:237
+#: inc/class/class-klikbayi-admin.php:137
+msgid "KlikBayi Affiliate"
+msgstr ""
+
+#: inc/class/class-klikbayi-admin.php:161
+msgid "Marketing plugin for KlikBayi affiliate. The killers plugin for KlikBayi.com&#39;s product."
+msgstr ""
+
+#: inc/class/class-klikbayi-admin.php:234
 msgid "Activate"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:245
+#: inc/class/class-klikbayi-admin.php:242
 msgid "Save Changes"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:248
+#: inc/class/class-klikbayi-admin.php:245
 msgid "Reset"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:261
+#: inc/class/class-klikbayi-admin.php:258
 msgid "Generate Code"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:268 inc/class/class-klikbayi-admin.php:387
+#: inc/class/class-klikbayi-admin.php:265 inc/class/class-klikbayi-admin.php:384
 msgid "Shortcode result: add into post area or text widget."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:270 inc/class/class-klikbayi-admin.php:388
-msgid ""
-"PHP Code result: add into your current theme. Use opening and closing php tags if this code not surrounding other php code."
+#: inc/class/class-klikbayi-admin.php:267 inc/class/class-klikbayi-admin.php:385
+msgid "PHP Code result: add into your current theme. Use opening and closing php tags if this code not surrounding other php code."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:287
+#: inc/class/class-klikbayi-admin.php:284
 msgid "Success to reset your data."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:298
+#: inc/class/class-klikbayi-admin.php:295
 msgid "Your affiliate ID still empty. Try to add yours."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:302
+#: inc/class/class-klikbayi-admin.php:299
 msgid "Your Affiliate ID was added."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:307
+#: inc/class/class-klikbayi-admin.php:304
 msgid "Success to add your affiliate ID."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:351
+#: inc/class/class-klikbayi-admin.php:348
 msgid "For more information:"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:351
+#: inc/class/class-klikbayi-admin.php:348
 msgid "Plugin Page"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:361
+#: inc/class/class-klikbayi-admin.php:358
 msgid "You need to add your KlikBayi.Com&#39;s affiliate ID first."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:367
+#: inc/class/class-klikbayi-admin.php:364
 msgid "General settings of form order."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:378
+#: inc/class/class-klikbayi-admin.php:375
 msgid "Shortcode of form order."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:379
+#: inc/class/class-klikbayi-admin.php:376
 msgid "Main Shortcode"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:381
+#: inc/class/class-klikbayi-admin.php:378
 msgid "With parameters"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:382
+#: inc/class/class-klikbayi-admin.php:379
 msgid "PHP Code for template:"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:383
+#: inc/class/class-klikbayi-admin.php:380
 msgid ""
 "USAGE: Shortcode and PHP Code for theme is available. Select your parameters, Choose option values, and push Generate Code "
 "button. Add your code into post area, widget or into theme directly."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:386
+#: inc/class/class-klikbayi-admin.php:383
 msgid "Generate Shortcode"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:401
+#: inc/class/class-klikbayi-admin.php:398
 msgid "Contact Page"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:404
+#: inc/class/class-klikbayi-admin.php:401
 #, php-format
 msgid ""
 "<p><img src=\"%1$s\"><i class=\"%2$s\">Book of  KlikBayi.Com.</i></p><p class=\"%3$s\"> &#126; by dr. Eiyta Ardinasari</p><p "
 "class=\"%3$s\">Here our support contact <i class=\"%4$s\"></i> <a href=\"%5$s\" title=\"%6$s\">%7$s</a></p>"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:435
+#: inc/class/class-klikbayi-admin.php:432
 msgid "Uncheck to hide."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:443
+#: inc/class/class-klikbayi-admin.php:440
 msgid "Include Post ID, separate them by comma."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:450
+#: inc/class/class-klikbayi-admin.php:447
 msgid "Exclude Post ID, separate them by comma."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:459
+#: inc/class/class-klikbayi-admin.php:456
 #, php-format
 msgid ""
 "Affiliate ID is your KlikBayi.Com&#39;s affiliate login or username.<br/>Don&#39;t have one? <a target=\"_blank\" href=\"%s/"
 "affiliasi.php\">Become Affiliate</a>."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:471
+#: inc/class/class-klikbayi-admin.php:468
 msgid "Make sure its your affiliate ID."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:487
+#: inc/class/class-klikbayi-admin.php:484
 msgid "Change the form title or leave empty to hide it."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:494
+#: inc/class/class-klikbayi-admin.php:491
 msgid "Change the button text"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:501
+#: inc/class/class-klikbayi-admin.php:498
 msgid "Set size in pixel or percent. 0 for unset."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:508
+#: inc/class/class-klikbayi-admin.php:505
 msgid "Width"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:509
+#: inc/class/class-klikbayi-admin.php:506
 msgid "Height"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:601
+#: inc/class/class-klikbayi-admin.php:598
 msgid "No items"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:616
+#: inc/class/class-klikbayi-admin.php:613
 msgid "Feed"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:651
+#: inc/class/class-klikbayi-admin.php:648
 msgid "Plugin Activated"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:652
+#: inc/class/class-klikbayi-admin.php:649
 msgid "General Settings"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:653
+#: inc/class/class-klikbayi-admin.php:650
 msgid "Shortcode"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:654
+#: inc/class/class-klikbayi-admin.php:651
 msgid "Update News"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:662
+#: inc/class/class-klikbayi-admin.php:659
 msgid "Add Your Affiliate ID"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:669
+#: inc/class/class-klikbayi-admin.php:666
 msgid "Show Under Post"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:670
+#: inc/class/class-klikbayi-admin.php:667
 msgid "Include Post"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:671
+#: inc/class/class-klikbayi-admin.php:668
 msgid "Exclude Post"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:672
+#: inc/class/class-klikbayi-admin.php:669
 msgid "Affiliate ID"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:673 inc/class/class-klikbayi-widget.php:118
+#: inc/class/class-klikbayi-admin.php:670 inc/class/class-klikbayi-widget.php:118
 msgid "Form Order Type"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:674 inc/class/class-klikbayi-widget.php:130
+#: inc/class/class-klikbayi-admin.php:671 inc/class/class-klikbayi-widget.php:130
 msgid "Form Title"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:675 inc/class/class-klikbayi-widget.php:135
+#: inc/class/class-klikbayi-admin.php:672 inc/class/class-klikbayi-widget.php:135
 msgid "Button Text"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:676
+#: inc/class/class-klikbayi-admin.php:673
 msgid "Form Size"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:677
+#: inc/class/class-klikbayi-admin.php:674
 msgid "Form Style"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:709
+#: inc/class/class-klikbayi-admin.php:706
 msgid "Error"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:726
+#: inc/class/class-klikbayi-admin.php:723
 msgid "plugin by"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:736
+#: inc/class/class-klikbayi-admin.php:733
 msgid "Version"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:796 inc/class/class-klikbayi-admin.php:804
+#: inc/class/class-klikbayi-admin.php:793 inc/class/class-klikbayi-admin.php:801
 msgid "null"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:798
+#: inc/class/class-klikbayi-admin.php:795
 msgid "Include post ID."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:806
+#: inc/class/class-klikbayi-admin.php:803
 msgid "Exclude post ID."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:814
+#: inc/class/class-klikbayi-admin.php:811
 msgid "Choose your type."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:822
+#: inc/class/class-klikbayi-admin.php:819
 msgid "Change the text. Leave empty to hide."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:830
+#: inc/class/class-klikbayi-admin.php:827
 msgid "Change the text."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:838
+#: inc/class/class-klikbayi-admin.php:835
 msgid "Form size: ( width, height, unit) px or %. Unit is unset for popup for/button type. Default i pixels."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:845
+#: inc/class/class-klikbayi-admin.php:842
 msgid "Form Style."
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:862
+#: inc/class/class-klikbayi-admin.php:859
 msgid "Parameter"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:863
+#: inc/class/class-klikbayi-admin.php:860
 msgid "Default"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:864
+#: inc/class/class-klikbayi-admin.php:861
 msgid "Option Value"
 msgstr ""
 
-#: inc/class/class-klikbayi-admin.php:865
+#: inc/class/class-klikbayi-admin.php:862
 msgid "Description"
 msgstr ""
 

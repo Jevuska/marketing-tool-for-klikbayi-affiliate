@@ -18,8 +18,6 @@ class KLIKBAYI_Admin
 	private $default_setting;
 	protected $plugin_uri;
 	protected $text_domain = 'klikbayi';
-	protected $plugin_title = 'Marketing Tool for KlikBayi Affiliate';
-	protected $plugin_menu_title = 'KlikBayi Affiliate';
 	protected $setting_slug = 'setting-admin-klikbayi';
 	
 	static public function init()
@@ -135,8 +133,8 @@ class KLIKBAYI_Admin
 		$admin_klikbayi = 
 		
 		add_options_page( 
-			esc_attr( $this->plugin_title ), 
-			esc_attr( $this->plugin_menu_title ), 
+			esc_attr__( 'Marketing Tool for KlikBayi Affiliate', 'klikbayi' ), 
+			esc_attr__( 'KlikBayi Affiliate', 'klikbayi' ), 
 			'manage_options', 
 			esc_attr( $this->setting_slug ), array(
 				$this,
@@ -153,15 +151,14 @@ class KLIKBAYI_Admin
 	public function create_page()
 	{
 		$col      = 1 == get_current_screen()->get_columns() ? '1' : '2';
-		$tag_line = __( 'Marketing plugin for KlikBayi affiliate. The killers plugin for KlikBayi.com&#39;s product.', 'klikbayi' );
 		
 		printf( '
 		<div id="%s" class="wrap">
 			<h1>%s</h1>
 			<div>%s</div>',
 				esc_attr( $this->text_domain ),
-				esc_html( $this->plugin_title ),
-				esc_html( $tag_line )
+				esc_attr__( 'Marketing Tool for KlikBayi Affiliate', 'klikbayi' ),
+				esc_attr__( 'Marketing plugin for KlikBayi affiliate. The killers plugin for KlikBayi.com&#39;s product.', 'klikbayi' )
 		);
 		
 		printf( '
@@ -612,7 +609,7 @@ class KLIKBAYI_Admin
 			$html .= implode( '</li><li>', $r );
 			$content = '<p><strong>%s %s</strong></p><ul><li>%s</li></ul>';
 		printf( $content,
-			ucwords( $this->domain ), 
+			ucwords( $this->domain ),
 			__( 'Feed', 'klikbayi' ), 
 			$html
 		);
@@ -723,7 +720,7 @@ class KLIKBAYI_Admin
 		
 		printf( $html,
 			esc_html( $this->plugin_data['Name'] ), 
-			__( 'plugin by', 'extrp' ), 
+			__( 'plugin by', 'klikbayi' ), 
 			$this->plugin_data['Author']
 		);
 	}
@@ -733,7 +730,7 @@ class KLIKBAYI_Admin
 		$txt = '%s %s';
 		
 		printf( $txt, 
-			__( 'Version', 'extrp' ), 
+			__( 'Version', 'klikbayi' ), 
 			esc_html( $this->plugin_data['Version'] )
 		);
 	}

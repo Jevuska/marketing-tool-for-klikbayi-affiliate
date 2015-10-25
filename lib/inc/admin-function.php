@@ -21,9 +21,9 @@ function klikbayi_updates()
 {
 	$current_version = get_option( 'klikbayi_version' );
 	
-	if ( version_compare( $current_version, '1.0.0', '<' ) ) {
-		include( KLIKBAYI_ADMIN_PATH . 'updates/klikbayi-1.0.0.php' );
-		update_option( 'klikbayi_version', '1.0.0' );
+	if ( version_compare( $current_version, '1.0.1', '<' ) ) {
+		include( KLIKBAYI_ADMIN_PATH . 'updates/klikbayi-1.0.1.php' );
+		update_option( 'klikbayi_version', '1.0.1' );
 	}
 }
 

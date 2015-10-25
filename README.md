@@ -7,7 +7,7 @@ License: GPLv3
 ---
 
 ## Description
-Marketing Tool for KlikBayi Affiliate plugin is created to support http://klikbayi.com/ affiliaters to selling klikbayi.com's product with embeded form or button order into Wordpress site. Settings configuration, Widget, Shortcode, and PHP Code for theme is available.
+**Marketing Tool for KlikBayi Affiliate** plugin is created to support http://klikbayi.com/ affiliaters to selling klikbayi.com's product with embeded form or button order into Wordpress site. Settings configuration, Widget, Shortcode, and PHP Code for theme is available.
 
 ## Installation
 1. Upload plugin zip contents to `wp-contents/plugin` directory and activate the plugin.
@@ -30,6 +30,9 @@ This plugin show the tool feature that embeded into your site automatically, and
 ![screenshot 3](lib/assets/img/screenshot-3.jpg)
 
 ## Changelog
+* 1.0.1 = October 26, 2015
+ * Fix translation Bahasa Indonesia
+ 
 * 1.0.0 = October 23, 2015
  * First official release!
 
