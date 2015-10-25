@@ -30,7 +30,9 @@ This plugin show the tool feature that embeded into your site automatically, and
 
 == Changelog ==
 * 1.0.1 = October 26, 2015
+ * Fix code in `admin-function.php`
  * Fix translation Bahasa Indonesia
+ * Fix markup lang readme files
  
 * 1.0.0 = October 23, 2015
  * First official release!
