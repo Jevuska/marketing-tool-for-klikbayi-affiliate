@@ -1,6 +1,6 @@
 === Marketing Tool for KlikBayi Affiliate ===
 Contributors: Jevuska
-Donate link: http://www.jevuska.com/contact/
+Donate link: http://www.jevuska.com/donate/
 Tags: widget, shortcode, sidebar, form, klikbayi, affiliate, order, onlineshop, kid, children, book, popup, marketing
 Requires at least: 4.0
 Tested up to: 4.3

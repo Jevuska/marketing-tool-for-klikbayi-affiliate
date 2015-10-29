@@ -1,6 +1,6 @@
 ---
 Contributors: Jevuska
-Donate link: http://www.jevuska.com/contact/
+Donate link: http://www.jevuska.com/donate/
 Requires at least: 4.0
 Tested up to: 4.3
 License: GPLv3
