@@ -4,7 +4,7 @@ Donate link: http://www.jevuska.com/donate/
 Tags: widget, shortcode, sidebar, form, klikbayi, affiliate, order, onlineshop, kid, children, book, popup, marketing
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +29,13 @@ This plugin show the tool feature that embeded into your site automatically, and
 3. KlikBayi Widget.
 
 == Changelog ==
+* 1.0.2 = November 02, 2015
+ * Fixes sanitize input field on settings and widget
+ * Add input text field on `form_title` and `button_text` shortcode
+ * Fixes code readability
+ * Remove unused files `jquery-klikbayi-global.js`, `jquery-klikbayi-global.min.js`, `jquery-klikbayi.min.js`
+ * Update translation Bahasa Indonesia
+ 
 * 1.0.1 = October 26, 2015
  * Fix code in `admin-function.php`
  * Fix translation Bahasa Indonesia
@@ -38,5 +45,5 @@ This plugin show the tool feature that embeded into your site automatically, and
  * First official release!
 
 == Upgrade Notice ==
-= 1.0.0 =
-This version fixes a security related bug. Upgrade immediately.
+* 1.0.2
+ * This version fixes a security related bug. Upgrade immediately.

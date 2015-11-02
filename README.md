@@ -30,6 +30,13 @@ This plugin show the tool feature that embeded into your site automatically, and
 ![screenshot 3](lib/assets/img/screenshot-3.jpg)
 
 ## Changelog
+* 1.0.2 = November 02, 2015
+ * Fixes sanitize input field on settings and widget
+ * Add input text field on `form_title` and `button_text` shortcode
+ * Fixes code readability
+ * Remove unused files `jquery-klikbayi-global.js`, `jquery-klikbayi-global.min.js`, `jquery-klikbayi.min.js`
+ * Update translation Bahasa Indonesia
+ 
 * 1.0.1 = October 26, 2015
  * Fix code in `admin-function.php`
  * Fix translation Bahasa Indonesia
@@ -39,5 +46,5 @@ This plugin show the tool feature that embeded into your site automatically, and
  * First official release!
 
 ## Upgrade Notice
-* 1.0.0
+* 1.0.2
  * This version fixes a security related bug. Upgrade immediately.

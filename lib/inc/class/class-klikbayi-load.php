@@ -23,11 +23,10 @@ class KLIKBAYI_Load
 	{
 		global $klikbayi_settings;
 		
-		if ( ! empty( $klikbayi_settings['aff'] ) )
-		{
-			
+		if ( isset( $klikbayi_settings['aff'] ) && ! empty( $klikbayi_settings['aff'] ) ) :
 		
 			add_action( 'init', 'klikbayi_register_shortcodes' );
+			
 			add_action( 'wp_enqueue_scripts', array(
 				$this,
 				'kb_global_enqueu_scripts' 
@@ -38,13 +37,17 @@ class KLIKBAYI_Load
 				'klikbayi_global_inline_js' 
 			) );
 			
-			
 			add_filter( 'the_content', 'do_shortcode' );
+			
 			add_filter( 'widget_text', 'do_shortcode' );
+			
 			if ( $klikbayi_settings['active'] )
 				add_filter( 'the_content', 'klikbayi_filter_the_content', 10 );
+			
 			add_action( 'klikbayi', 'klik_bayi_com' );
-		}
+			
+		endif;
+		
 		add_action( current_filter(), array(
 			$this,
 			'load_file' 
@@ -59,28 +62,13 @@ class KLIKBAYI_Load
 	
 	public function kb_global_enqueu_scripts()
 	{
-		if( ! is_admin() ) :
+		if( ! is_admin() )
 			wp_enqueue_style( 'thickbox' );
-			wp_enqueue_script( 'klikbayi-js', KLIKBAYI_PLUGIN_URL . 'lib/assets/js/jquery-klikbayi-global.min.js', array(
-			 'jquery' 
-		), KLIKBAYI_PLUGIN_VERSION, true );
-		endif;
 	}
 	
 	public function klikbayi_global_inline_js()
 	{
-		if( ! is_admin() ) :
-		add_thickbox();
-?>
-<script type="text/javascript">
-//<! [CDATA[
-jQuery( document ).ready(function($) {
-	$('#klikbayi').klikbayi();
-});
-//]]>
-</script>
-		<?php
-		endif;
+		if( ! is_admin() )
+			add_thickbox();
 	}
-	
 }

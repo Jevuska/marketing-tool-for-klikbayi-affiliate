@@ -29,6 +29,7 @@ class KLIKBAYI_Admin
 	public function __construct()
 	{
 		$domain = get_option('klikbayi_domain');
+		
 		if( false === strpos( $domain, $this->text_domain ) )
 			return;
 		
@@ -239,10 +240,10 @@ class KLIKBAYI_Admin
 		do_settings_sections( 'klikbayi_option_general' ); ?>
 		<div id="major-publishing-actions">
 					<div id="publishing-action">
-						<?php submit_button( __( 'Save Changes', 'klikbayi' ), 'primary', 'submit', false ); ?>	
+						<?php submit_button( __( 'Reset', 'klikbayi' ), 'secondary', 'klikbayi_option[reset]', false ); ?>
 					</div>
 					<div class="publishing-action">
-						<?php submit_button( __( 'Reset', 'klikbayi' ), 'secondary', 'klikbayi_option[reset]', false ); ?>
+						<?php submit_button( __( 'Save Changes', 'klikbayi' ), 'primary', 'submit', false ); ?>	
 					</div>
 					
 		<div class="clear"></div>
@@ -253,10 +254,19 @@ class KLIKBAYI_Admin
 
 	public function box_shortcode()
 	{
-		do_settings_sections( 'klikbayi_option_shortcode' );
+		do_settings_sections( 'klikbayi_option_shortcode' ); ?>
 		
-		submit_button( __( 'Generate Code', 'klikbayi' ), 'large', false, false, array( 'id' => 'generate') );
+		<div id="major-publishing-actions">
+			<div id="publishing-action">
+				<?php submit_button( __( 'Reset', 'klikbayi' ), 'large', false, false, array( 'id' => 'reset_code') ); ?>
+			</div>
+			<div class="publishing-action">
+				<?php submit_button( __( 'Generate Code', 'klikbayi' ), 'primary large', false, false, array( 'id' => 'generate') ); ?>
+			</div>
+		<div class="clear"></div>
+		</div>
 		
+		<?php
 		$generate_code = '<p><label for="%1$s"><span class="description">%3$s</span></label><textarea id="%1$s" class="%2$s large-text"></textarea><textarea id="%4$s" class="%2$s large-text"></textarea><label for="%4$s"><span class="description">%5$s</span></label></p>';
 		
 		printf( $generate_code,
@@ -279,46 +289,51 @@ class KLIKBAYI_Admin
 
 		$keys = array_keys( $this->default_setting );
 		
-		if ( isset( $input['reset'] ) ) {
-			
-			$msg = __( 'Success to reset your data.', 'klikbayi' );
-			
-			add_settings_error( 'klikbayi-notices', esc_attr( 'reset-notice' ), $msg, 'updated' );
-
-			$new_input = wp_parse_args( array( 'active' => (bool) 1, 'aff' => $this->options['aff'] ), $this->default_setting );
-			return $new_input;
-		}
-	
-		if ( isset( $input['activate'] ) )
+		if ( isset( $input['activate'] ) && wp_validate_boolean( $input['activate'] ) )
 		{
-			if ( '' == $input['aff'] ) {
-				$msg = __( 'Your affiliate ID still empty. Try to add yours.', 'klikbayi' );
-				$flag = 'error';
+			if ( '' == sanitize_user( $input['aff'] ) ) {
+				$msg       = __( 'Your affiliate ID still empty. Try to add yours.', 'klikbayi' );
+				$flag      = 'error';
 				$new_input = false;
-			} else if (  '' !== $this->options['aff'] ) {
-				$text = __( 'Your Affiliate ID was added.', 'klikbayi' );
-				$msg = $text . $this->options['aff'];
-				$flag = 'notice-warning';
+			} else if (  '' !== sanitize_user( $this->options['aff'] ) ) {
+				$text      = __( 'Your Affiliate ID was added.', 'klikbayi' );
+				$msg       = $text . $this->options['aff'];
+				$flag      = 'notice-warning';
 				$new_input = false;
 			} else {
 				$text = __( 'Success to add your affiliate ID.', 'klikbayi' );
-				$msg = $text . '<kbd>' . $input['aff'] . '</kbd>';
+				$msg  = $text . '<kbd>' . sanitize_user( $input['aff'] ) . '</kbd>';
 				$flag = 'updated';
 				$input['active'] = (bool) 1;
 				$new_input = wp_parse_args( $input, $this->default_setting );
 			}
-			add_settings_error( 'klikbayi-notices', esc_attr( 'active-notice' ), $msg, $flag );
+			add_settings_error( 'klikbayi-notices', 'active-notice', $msg, esc_attr( $flag ) );
 			
 			return $this->validate->sanitize( $new_input );
 		}
-	
+
+		if ( isset( $input['reset'] ) && 'Reset' == sanitize_text_field( $input['reset'] ) )
+		{
+			$new_input = wp_parse_args(
+				array(
+					'active' => (bool) 1,
+					'aff' => sanitize_user( $this->options['aff'] ) 
+				),
+				$this->default_setting
+			);
+			
+			$msg = __( 'Success to reset your data.', 'klikbayi' );
+			add_settings_error( 'klikbayi-notices', 'reset-notice', $msg, 'updated' );
+			
+			return $new_input;
+		}
+		
 		if ( isset( $input['size_1'] ) || isset( $input['size_2'] ) )
 			$input['size'] = array(
-				$input['size_1'],
-				$input['size_2'],
-				$input['size_3']
+				absint( $input['size_1'] ),
+				absint( $input['size_2'] ),
+				( 'px' == sanitize_text_field( $input['size_3'] ) ) ? 'px' : '%%'
 			);
-		
 		
 		foreach ( $keys as $k ):
 			$new_input[ $k ] = $input[ $k ];
@@ -336,8 +351,8 @@ class KLIKBAYI_Admin
 		
 		foreach ( $this->tabs as $id => $data ) {
 			$screen->add_help_tab( array(
-				'id' => $id,
-				'title' => __( $data['title'], 'klikbayi' ),
+				'id'       => $id,
+				'title'    => __( $data['title'], 'klikbayi' ),
 				'callback' => array(
 					$this,
 					'prepare' 
@@ -350,7 +365,9 @@ class KLIKBAYI_Admin
 	
 	public function prepare( $screen, $tab )
 	{
-		printf( '<p>%s</p>', __($tab['callback'][0]->tabs[ $tab['id'] ]['content'],'klikbayi') );
+		printf( '<p>%s</p>',
+			__( $tab['callback'][0]->tabs[ $tab['id'] ]['content'],'klikbayi' )
+		);
 	}
 	
 	public function print_section_info_activated()
@@ -398,22 +415,24 @@ class KLIKBAYI_Admin
 		$title           = __( 'Contact Page' );
 		$email           = 'kontak@' . $this->domain;
 		
-		$html = wp_kses( __( '<p><img src="%1$s"><i class="%2$s">Book of  KlikBayi.Com.</i></p><p class="%3$s"> &#126; by dr. Eiyta Ardinasari</p><p class="%3$s">Here our support contact <i class="%4$s"></i> <a href="%5$s" title="%6$s">%7$s</a></p>', 'klikbayi' ), array(
-					'p' => array(
-						'class' => array()
-					),
-					'i' => array(
-						'class' => array()
-					),
-					'a' => array(
-						'href' => array(),
-						'title' => array()
-					),
-					'img' => array(
-						'src' => array()
-					) 			
-				) 
-			);
+		$html = wp_kses(
+			__( '<p><img src="%1$s"><i class="%2$s">Book of  KlikBayi.Com.</i></p><p class="%3$s"> &#126; by dr. Eiyta Ardinasari</p><p class="%3$s">Here our support contact <i class="%4$s"></i> <a href="%5$s" title="%6$s">%7$s</a></p>', 'klikbayi' ),
+			array(
+				'p' => array(
+					'class' => array()
+				),
+				'i' => array(
+					'class' => array()
+				),
+				'a' => array(
+					'href' => array(),
+					'title' => array()
+				),
+				'img' => array(
+					'src' => array()
+				)
+			)
+		);
 		
 		printf( $html,
 			esc_url_raw( $book_cover ),
@@ -424,29 +443,30 @@ class KLIKBAYI_Admin
 			esc_attr( $title ),
 			sanitize_email( $email )
 		);
-		do_action('klikbayi_info_blog');
+		do_action( 'klikbayi_info_blog' );
 	}
 	
 	public function active_cb()
 	{
 		$text    = __( 'Uncheck to hide.', 'klikbayi' );
 		$checked = $this->checkthis( 'active' );
-		printf( '<p>%s</p>', $this->check_box_form( 'active', $checked, $text ) );
 		
+		printf( '<p>%s</p>',
+			$this->check_box_form( 'active', $checked, $text )
+		);
 	}
 	
 	public function post__in_cb()
 	{
 		$description = __( 'Include Post ID, separate them by comma.', 'klikbayi' );
-		printf( $this->textarea( 'post__in', $description ) );
 		
+		printf( $this->textarea( 'post__in', $description ) );
 	}
 	
 	public function post__not_in_cb()
 	{
 		$description = __( 'Exclude Post ID, separate them by comma.', 'klikbayi' );
 		printf( $this->textarea( 'post__not_in', $description ) );
-		
 	}
 	
 	public function aff_cb()
@@ -468,7 +488,6 @@ class KLIKBAYI_Admin
 			$description = __( 'Make sure its your affiliate ID.', 'klikbayi' );
 		
 		printf( $this->input( 'aff', $description, 'text' ) );
-		
 	}
 	
 	public function type_cb()
@@ -483,14 +502,12 @@ class KLIKBAYI_Admin
 	{	
 	    $description = __( 'Change the form title or leave empty to hide it.', 'klikbayi' );
 		printf( $this->input( 'form_title', $description, 'text' ) );
-		
 	}
 	
 	public function button_text_cb()
 	{	
 	    $description = __( 'Change the button text','klikbayi' );
 		printf( $this->input( 'button_text', $description, 'text' ) );
-		
 	}
 	
 	public function size_cb()
@@ -498,7 +515,7 @@ class KLIKBAYI_Admin
 		$text = __( 'Set size in pixel or percent. 0 for unset.','klikbayi' );
 		$html = '';
 		if ( '' == $this->options['size'] )
-			$this->options['size'] = array(0,0,'px');
+			$this->options['size'] = array( 0, 0, 'px' );
 		
 		$size_txt_arr = array(
 			'',
@@ -506,17 +523,23 @@ class KLIKBAYI_Admin
 			__( 'Height', 'klikbayi' ),
 			'px',
 			'%%'
-			);
+		);
 
 		for ( $i = 1 ; $i < count( $size_txt_arr ) ; $i++ ) :
-			if ( 3 > $i ) {
+			if ( 3 > $i )
+			{
 				$html .= '<label for="size_' . $i . '">' . $size_txt_arr[$i] . '</label> <input id="size_' . $i . '" type="number" step="1" min="0" class="small-text" value="%' . $i . '$s" name="klikbayi_option[size_' . $i . ']"> ';
 				continue;
 			};
+			
 			$selected = $this->options['size'][2] == $size_txt_arr[$i] ? 'checked="checked"' : '';
+			
 			$html .= '<label for="size_' . $i . '">' . $size_txt_arr[$i] . '</label> <input id="size_' . $i . '" type="radio" value="%' . $i . '$s" name="klikbayi_option[size_3]" ' . $selected . '> ';
-		endfor; 
+			
+		endfor;
+		
 			$html .='<p class="description">%5$s</p>';
+			
 		printf( $html,
 			intval( $this->options['size'][0] ), 
 			intval( $this->options['size'][1] ),
@@ -528,9 +551,13 @@ class KLIKBAYI_Admin
 
 	public function style_cb()
 	{
-		foreach ( $this->style as $t ):
+		foreach ( $this->style as $t ) :
 			$selected = $this->options['style'] == $t ? 'checked="checked"' : '';
-			printf( '<label for="style-%1$s"><input type="radio" id="style-%1$s" name="klikbayi_option[style]" value="%1$s" %3$s/> <span>%2$s</span></label> ', esc_attr( $t ), ucwords( esc_attr( $t ) ), $selected );
+			printf( '<label for="style-%1$s"><input type="radio" id="style-%1$s" name="klikbayi_option[style]" value="%1$s" %3$s/> <span>%2$s</span></label> ',
+			esc_attr( $t ),
+			ucwords( esc_attr( $t ) ),
+			$selected
+			);
 		endforeach;
 	}
 	
@@ -541,11 +568,12 @@ class KLIKBAYI_Admin
 			 $required = ' required';
 		 
 		$input = sprintf( '<input type="%1$s" class="%2$s" name="klikbayi_option[%2$s]" value="%3$s"%4$s/><p id="%3$s-description" class="description">%5$s</p>',
-		esc_attr( $inputtype),
-		esc_attr( $type ),
-		(isset($this->options[$type])) ? esc_html( $this->options[esc_attr( $type )] ) : $this->default_setting[esc_attr( $type )], 
-		$required,
-		__( $description, 'klikbayi' ) );
+			esc_attr( $inputtype ),
+			$type,
+			( isset( $this->options[ $type ] ) ) ? sanitize_text_field( $this->options[ $type ] ) : $this->default_setting[ $type ], 
+			$required,
+			__( $description, 'klikbayi' )
+		);
 
 		return $input;
 	}
@@ -660,6 +688,7 @@ class KLIKBAYI_Admin
 		);
 		return $activated;
 	}
+	
 	protected function general_array()
 	{
 		$general_array = array(
@@ -692,20 +721,25 @@ class KLIKBAYI_Admin
 		);
 		wp_enqueue_script( 'postbox' );
 		wp_enqueue_script( 'klikbayi-script-handle', 
-			KLIKBAYI_PLUGIN_URL . 'lib/assets/js/jquery-klikbayi.min.js', 
+			KLIKBAYI_PLUGIN_URL . 'lib/assets/js/jquery-klikbayi.js', 
 			array(
 			 'wp-color-picker' 
 			), 
 			KLIKBAYI_PLUGIN_VERSION, 
 			true 
 		);
+		
 		wp_enqueue_media();
+		
 		wp_localize_script( 
 			'klikbayi-script-handle', 
 			'klikbayiL10n', array(
-				'notice1'     => __( 'Error', 'klikbayi' )
-			) 
+				'notice1' => __( 'Error', 'klikbayi' ),
+				'ok'      => __( 'OK', 'klikbayi' ),
+				'null'    => __( 'empty', 'klikbayi' )
+			)
 		);
+		
 		wp_localize_script( 
 			'klikbayi-script-handle', 
 			'klikbayiSet', array(
@@ -738,40 +772,38 @@ class KLIKBAYI_Admin
 	public function klikbayi_inline_js()
 	{
 		global $admin_klikbayi;
+		
 		$screen = get_current_screen();
+		
 		if ( $screen->id != $admin_klikbayi )
 			return;
-?>
-<script type="text/javascript">
-//<! [CDATA[
-jQuery( document ).ready(function($) {
-	$('#<?php echo $this->text_domain; ?>').klikbayi();
-});
-//]]>
-</script>
-		<?php
+
+		print "<script type='text/javascript'>\n";
+		print "jQuery( document ).ready( function( $ ) {\n";
+		print "$('#" . $this->text_domain . "').klikbayi();\n";
+		print "} );\n";
+		print "</script>\n";
 	}
-	
 }
 
-if( ! class_exists( 'WP_List_Table' ) ) {
+if( ! class_exists( 'WP_List_Table' ) )
+{
 	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
 class Klik_Bayi_Shortcode_Table extends WP_List_Table
 {
-
 	public function prepare_items()
     {
-		$columns = $this->get_columns();
-        $hidden = $this->get_hidden_columns();
-        $sortable = $this->get_sortable_columns();
+		$columns     = $this->get_columns();
+        $hidden      = $this->get_hidden_columns();
+        $sortable    = $this->get_sortable_columns();
 		$table_class = $this->get_table_classes();
-        $data = $this->table_data();
+        $data        = $this->table_data();
 		
         usort( $data, array( &$this, 'sort_data' ) );
 
-        $this->_column_headers = array($columns, $hidden, $sortable,$table_class);
+        $this->_column_headers = array( $columns, $hidden, $sortable,$table_class );
 		
         $this->items = $data;
 	}
@@ -845,20 +877,21 @@ class Klik_Bayi_Shortcode_Table extends WP_List_Table
 		return $data;
 	}
 	
-	public function column_cb( $item ) {
+	public function column_cb( $item )
+	{
         return sprintf(
-            '<label class="screen-reader-text" for="cb-%1$s">%1$s</label><input type="checkbox" value="" id="cb-%1$s">',
+            '<label class="screen-reader-text" for="cb-%1$s">%1$s</label><input type="checkbox" value="" id="cb-%1$s" class="%1$s">',
 			$item['parameters']
-        );    
-    }
+        );
+	}
 	
 	public function get_columns()
     {
 		$columns = array(
-			'cb'        => '<input type="checkbox" />',
-			'parameters' => __( 'Parameter', 'klikbayi' ),
-			'base' => __( 'Default', 'klikbayi' ),
-			'optional' => __( 'Option Value', 'klikbayi' ),
+			'cb'          => '<input type="checkbox" />',
+			'parameters'  => __( 'Parameter', 'klikbayi' ),
+			'base'        => __( 'Default', 'klikbayi' ),
+			'optional'    => __( 'Option Value', 'klikbayi' ),
 			'description' => __( 'Description', 'klikbayi' )
 		);
 		
@@ -884,7 +917,8 @@ class Klik_Bayi_Shortcode_Table extends WP_List_Table
 
 	public function column_default( $item, $column_name )
     {
-        switch( $column_name ) {
+        switch( $column_name )
+		{
             case 'id':
             case 'parameters':
             case 'base':
@@ -900,26 +934,19 @@ class Klik_Bayi_Shortcode_Table extends WP_List_Table
 		
 	private function sort_data( $a, $b )
     {
-
         $orderby = 'id';
-        $order = 'desc';
+        $order   = 'desc';
 
-        if(!empty($_GET['orderby']))
-        {
+        if( ! empty( $_GET['orderby'] ) )
             $orderby = $_GET['orderby'];
-        }
 
-        if(!empty($_GET['order']))
-        {
+        if( ! empty( $_GET['order'] ) )
             $order = $_GET['order'];
-        }
 
-        $result = strcmp( $a[$orderby], $b[$orderby] );
+        $result = strcmp( $a[ $orderby ], $b[ $orderby ] );
 
-        if($order === 'desc')
-        {
+        if( 'desc' === $order )
             return $result;
-        }
 
         return -$result;
     }

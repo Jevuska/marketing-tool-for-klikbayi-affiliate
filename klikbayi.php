@@ -3,7 +3,7 @@
 Plugin Name: Marketing Tool for KlikBayi Affiliate
 Plugin URI: https://github.com/Jevuska/marketing-tool-for-klikbayi-affiliate
 Description: Marketing plugin for KlikBayi affiliate. The easy way to selling <a href="http://klikbayi.com/">KlikBayi.com's</a> product.
-Version: 1.0.1
+Version: 1.0.2
 Author: Jevuska
 Author URI: http://www.jevuska.com
 License: GPL3
@@ -52,7 +52,7 @@ if ( ! class_exists( 'Klik_Bayi' ) ):
 		public function setup_constants()
 		{
 			if ( ! defined( 'KLIKBAYI_PLUGIN_VERSION' ) )
-				define( 'KLIKBAYI_PLUGIN_VERSION', '1.0.1' );
+				define( 'KLIKBAYI_PLUGIN_VERSION', '1.0.2' );
 			
 			if ( ! defined( 'KLIKBAYI_PLUGIN_FILE' ) )
 				define( 'KLIKBAYI_PLUGIN_FILE', __FILE__ );

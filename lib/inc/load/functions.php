@@ -26,19 +26,20 @@ function klikbayi_shortcode( $atts = null, $result = '' )
 
 	$a = $klikbayi_sanitize->sanitize( $b );
 	
-	$result = klikbayi_create_html( $a['type'], $a['form_title'], $a['button_text'], $a['size'], $a['style'], $a['post__in'] , $a['post__not_in'], $option);
+	$result = klikbayi_create_html( $a['type'], $a['form_title'], $a['button_text'], $a['size'], $a['style'], $a['post__in'] , $a['post__not_in'], $option );
 
 	$author_id         = $post->post_author;
-	$can_publish_posts = user_can( $author_id, klikbayi_capability_filter() );
+	$can_publish_posts = user_can( $author_id, klikbayi_capability_filter( 'publish_posts' ) );
 	if ( ! $can_publish_posts )
 		return;
 	return $result;
 }
 
-function klikbayi_capability_filter()
+function klikbayi_capability_filter( $cap )
 {
-	$option = 'publish_posts';
-	return apply_filters( 'klikbayi_capability_filter', $option );
+	//avalible option refer to https://codex.wordpress.org/Roles_and_Capabilities
+	$cap = apply_filters( 'klikbayi_capability_filter', $cap );
+	return sanitize_key( $cap );
 }
 
 function klikbayi_filter_the_content( $content )
@@ -121,25 +122,25 @@ function klikbayi_create_html( $type, $form_title = '', $button_text, $size = ''
 	}
 	
 		$output = '';
-		$head = '';
+		$head   = '';
 
 		if ( '' != $form_title )
-			$head = sprintf( '<h3>%s</h3>', __( $form_title, 'klikbayi' ) );
+			$head = sprintf( '<h3>%s</h3>',
+			__( $form_title, 'klikbayi' )
+			);
 		
 		$hwstring = form_hwstring( $size[0], $size[1], $size[2] );
 		
 		$html = '<div id="klikbayi';
 		if ( 'form' == $type )
 		{
-			if( '' != $hwstring )
-			{
+			if ( '' != $hwstring )
 				$size = " style='$hwstring'";
-			}else{
+			else
 				$size = '';
-			}
 		
-			$form = klikbayi_form_order( $button_text, 'submit', $head, $style );
-			$html .= '"%s>%s</div>';
+			$form   = klikbayi_form_order( $button_text, 'submit', $head, $style );
+			$html  .= '"%s>%s</div>';
 			$output = sprintf( $html,  
 				$size,
 				$form 
@@ -148,11 +149,11 @@ function klikbayi_create_html( $type, $form_title = '', $button_text, $size = ''
 		
 		if ( 'button' == $type ) {
 			
-			$html .= 'Popup" style="display:none;'. '">%1$s</div>%2$s';
-			$form = klikbayi_form_order( $button_text, 'submit', '',$style );
+			$html  .= 'Popup" style="display:none;'. '">%1$s</div>%2$s';
+			$form   = klikbayi_form_order( $button_text, 'submit', '', $style );
 			$output = sprintf( $html,
 				$form, 
-				klikbayi_button_order( $button_text, '', 'btn-klikbayi', true, $form_title, $size )
+				klikbayi_button_order( $button_text, 'button', 'input-klikbayi', true, $form_title, $size )
 			);
 		}
 		return $output;
@@ -161,13 +162,13 @@ function klikbayi_create_html( $type, $form_title = '', $button_text, $size = ''
 if ( ! function_exists( 'form_hwstring' ) ) :
 	function form_hwstring( $width, $height, $unit )
 	{
-		$out = '';
+		$hwstring = '';
 		$unit = str_replace('%%','%',$unit);
 		if ( 0 < $width )
-			$out .= 'width:'.intval($width) . $unit .';';
+			$hwstring .= 'width:'.intval($width) . $unit .';';
 		if ( 0 < $height )
-			$out .= 'height:'.intval($height) . $unit;
-		return $out;
+			$hwstring .= 'height:'.intval($height) . $unit;
+		return $hwstring;
 	}
 endif;
 
@@ -175,28 +176,32 @@ function klikbayi_form_order( $button_text, $type, $head = '', $style )
 {
 	global $klikbayi_sanitize;
 	
-	$url = esc_url( klikbayi_url( 'aff' ) );
+	$url   = klikbayi_url( 'aff' );
+	$html  = $head;
+	$html .= sprintf( '<form action="%1$s" id="klikbayi" method="post"><table id="klikbayi-%2$s">',
+		esc_url( $url ),
+		sanitize_html_class( $style )
+	);
 	
-	$html = $head . '<form action="' . $url . '" id="klikbayi" method="post"><table id="klikbayi-' . $style . '">';
-
-	$item = kb_order_array();
+	$item  = kb_order_array();
 	
 	foreach ( $item as $k => $v ) :
-		$input_type = 'email' == $k ? 'email' : 'text';
-		$placeholder = 'placeholder' != $style ? '' : $v[0] ;		
+		$input_type  = ( 'email' == $k ) ? 'email' : 'text';
+		$placeholder = ( 'placeholder' != $style ) ? '' : $v[0] ;		
 		$html .= klikbayi_input_order( $k, $v[0], $input_type, $placeholder, $v[1], $style );
 	endforeach;
-
-	$html .= '</table>' . klikbayi_button_order( $button_text, $type );
 	
+	$html .= '</table>';
+	$html .= klikbayi_button_order( $button_text, $type, 'btn-klikbayi' );
 	$html .= '</form>';
+	
 	return $html;
 }
 
 function klikbayi_input_order( $item = '', $item_title = '', $input_type = '', $placeholder = '', $name = '', $style )
 {
 	$pos   = '<th><label>%1$s</label></th>';
-	$html = '';
+	$html  = '';
 	$html .= '<tr>';
 	
 	if ( 'inline' == $style ) {
@@ -207,46 +212,67 @@ function klikbayi_input_order( $item = '', $item_title = '', $input_type = '', $
 	if ( 'left' == $style )
 		$html .= $pos;
 	
-	$html .= '<td><input type="%2$s" class="form-control %3$s" value="" placeholder="%4$s" name="%5$s"  required></td>';
+	$html .= '<td><input type="%2$s" value="" class="form-control %3$s" placeholder="%4$s" name="%5$s" required></td>';
 	
 	if ( 'right' == $style )
 		$html .= $pos;
 	
 	$html .= '</tr>';
 	
-	$output = sprintf( $html, 
-		$item_title, 
-		$input_type, 
-		$item, 
-		$placeholder,
-		$name
+	$array = array(
+		$item_title,
+		esc_attr( $input_type ),
+		$item,
+		esc_attr( $placeholder ),
+		esc_attr( $name )
+	);
+	
+	$arr = array_map( 'esc_attr', $array);
+	
+	$output = sprintf( $html,
+		$arr[0],
+		$arr[1],
+		$arr[2],
+		$arr[3],
+		$arr[4]
 	);
 	
 	return $output;
 }
 
-function klikbayi_button_order( $button_text, $type = '', $id = '', $btn_input = false, $form_title = '', $size = '' )
+function klikbayi_button_order( $button_text, $type, $id, $btn_input = false, $form_title = '', $size = '' )
 {
 	$class_btn = 'button button-primary';
 	
-	if( ! empty( $type ) )
-		$type = 'type="' . $type . '"';
-	
-	if( ! empty( $id ) )
-		$id = 'id="' . $id . '"';
-	
-	if( $btn_input ) :
-		$out = '';
+	if( false != $btn_input ) :
+		$hw = '';
+		
 		if ( 0 < $size[0] )
-			$out .= 'width=' . intval($size[0]);
+			$hw .= 'width=' . intval( $size[0] );
+		
 		if ( 0 < $size[1] )
-			$out .= '&amp;height=' . intval($size[1]);
-		if ( '' == $out )
-			$out = 'width=500&amp;height=500';
-		$html = sprintf( '<input alt="#TB_inline?'. $out . '&amp;inlineId=klikbayiPopup" title="%s" type="button" class="%s thickbox" value="%s" %s>', __( $form_title, 'klikbayi' ), $class_btn, __($button_text, 'klikbayi'), $id );
+			$hw .= '&amp;height=' . intval( $size[1] );
+		
+		if ( '' == $hw )
+			$hw .= 'width=500&amp;height=500';
+		
+		$html = sprintf( '<input alt="#TB_inline?%1$s&amp;inlineId=klikbayiPopup" title="%2$s" value="%3$s" class="%4$s thickbox" type="%5$s" id="%6$s">',
+			$hw,
+			$form_title,
+			$button_text,
+			esc_attr( $class_btn ),
+			esc_attr( $type ),
+			esc_attr( $id )
+		);
 	else :
-		$html = sprintf( '<button class="%s %s" %s>%s</button>', $class_btn, $type, $id, __($button_text, 'klikbayi') );
+		$html = sprintf( '<button class="%1$s" type="%2$s" id="%3$s">%4$s</button>',
+			esc_attr( $class_btn ),
+			esc_attr( $type ),
+			esc_attr( $id ),
+			$button_text
+		);
 	endif;
+	
 	return $html;
 }
 
@@ -264,8 +290,8 @@ function kb_order_array()
 
 function klikbayi_style_uri()
 {
-	$path_css = KLIKBAYI_URL_PLUGIN_CSS;
-	return $path_css . 'style.css';
+	$uri_css = KLIKBAYI_URL_PLUGIN_CSS . 'style.css';
+	return esc_url( $uri_css );
 }
 
 function klikbayi_url( $option )
@@ -273,23 +299,35 @@ function klikbayi_url( $option )
 	global $klikbayi_settings;
 	
 	$args = array();
-	if ( get_option('klikbayi_domain') ) {
-		$aff = $klikbayi_settings['aff'];
-		$url = str_replace( 'www.','', get_option('klikbayi_domain' ) );
+	
+	if ( '' == $option )
+		return;
+	
+	$opt = get_option( 'klikbayi_domain' );
+	
+	if ( $opt )
+	{
+		$aff    = sanitize_user( $klikbayi_settings['aff'] );
+		$url    = str_replace( 'www.', '', $opt );
 		$domain = parse_url( 'http://' . $url, PHP_URL_HOST );
-		$args = array(
+		
+		$args   = array(
 			'domain' => $domain,
-			'url' => 'http://' . $domain,
-			'aff' => 'http://' . $domain . '/order1.php?ref=' . sanitize_user( $aff ),
+			'url'    => 'http://' . $domain,
+			'aff'    => 'http://' . $domain . '/order1.php?ref=' . $aff,
 		);
 	}
-	return $args[ $option ];
+	
+	if ( isset( $args[ $option ] ) )
+		return $args[ $option ];
+	return;
 }
 
 function klikbayi_blog()
 {
-	$url = '';
-	if ( get_option('klikbayi_blog') )
-		$url = 'http://' . get_option('klikbayi_blog');
-	return $url;
+	$url    = '';
+	$option = get_option( 'klikbayi_blog' );
+	if ( $option )
+		$url = 'http://' . $option;
+	return esc_url( $url );
 }

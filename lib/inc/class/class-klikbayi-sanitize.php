@@ -23,8 +23,11 @@ class KLIKBAYI_Sanitize
 		$this->source = 'S0xJS0JBWUk=';
 	}
 	
-	public function domain( $string ){
+	public function domain( $string )
+	{
 		$d = '';
+		
+		$string = esc_html( $string );
 		if ( false === strpos( $string, base64_decode( $this->source ) ) )
 		{
 			return $d;
@@ -39,69 +42,94 @@ class KLIKBAYI_Sanitize
 		if ( is_array( $list ) )
 			$arr = $list;
 		else
-			$arr = ( $list != "" ) ? explode( ',', $list ) : array();
+			$arr = ( '' != $list ) ? explode( ',', $list ) : array();
 		
 		if ( array_filter( $arr ) )
 		{
 			foreach ( array_unique( $arr ) as $post_id ) :
-				$id = absint( $post_id );
-				if ( is_string( get_post_status( $id ) ) )
-					$result[] = $id;
+				$post_id = absint( $post_id );
+				
+				if ( '' == $post_id )
+					continue;
+				
+				if ( is_string( get_post_status( $post_id ) ) )
+					$result[] = $post_id;
 			endforeach;
+			
+			if ( array_filter( $result ) )
+				$result = array_values( array_unique( $result ) );
 		}
 		return $result;
 	}
 	
-	public function create_list_post_ids( $array )
+	public function create_list_post_ids( $lists )
 	{
 		$list = '';
 		
-		if( empty( $array ) )
+		if ( '' == $lists )
 			return $list;
-		
-		if ( is_array( $array ) )
+
+		$result = array();
+		if ( is_array( $lists ) )
 		{
-			$result = array();
-			foreach ( $array as $id )
+			foreach ( $lists as $id )
 			{
-				$result[] = absint( $id );
+				$id = absint( $id );
+				
+				if ( '' == $id )
+					continue;
+				
+				$result[] = $id;
 			}
 			if ( array_filter( $result ) )
-				$list = implode( ',', $result );
+				$list = implode( ',', array_values( array_unique( $result ) ) );
 		}
 		else
 		{
-			$list = $array;
+			$list = array( $lists );
 		}
-		return $list;
+		
+		return esc_textarea( $list );
 	}
 	
-	public function type($type)
-	{		
+	public function type( $type )
+	{
 		$form = 'form';
 		
+		$type = sanitize_key( $type );
 		if ( in_array( $type, $this->type_array() ) )
 			return $type;
-		
-		return $form;
+		return sanitize_key( $form );
 	}
 	
 	public function size( $size )
-	{	
-	    $size_arr = array( (int) 0, (int) 0, 'px' );
-		if( is_array( $size ) )
-			return $size;
-		if ( strpos( $size, ',' ) )
+	{
+		$size_arr = array( (int) 0, (int) 0, 'px' );
+		
+		if( is_array( $size ) && array_filter( $size )  )
+		{
+			$size_arr = array(
+				absint( $size[0] ),
+				absint( $size[1] ),
+				( 'px' == esc_attr( $size[2] ) ) ? 'px' : '%%'
+			);
+			return $size_arr;
+		}
+		
+		if ( false  !== strpos( $size, ',' ) )
 			$size_arr = explode( ',', $size );
+		
 		return $size_arr;
 	}
 	
 	public function style( $style )
 	{	
 	    $_style = 'left';
+		
+		$style = sanitize_key( $style );
 		if ( in_array( $style, $this->style_array() ) )
-			$_style = esc_attr( $style );
-		return $_style;
+			$_style = $style;
+		return sanitize_key( $_style );
 	}
 	
 	public function type_array()
@@ -146,7 +174,7 @@ class KLIKBAYI_Sanitize
 			$a[7]  => sanitize_text_field( $b['form_title'] ),	
 			$a[8]  => sanitize_text_field( $b['button_text'] ),
 			$a[9]  => $this->size( $b['size'] ),
-			$a[10]  => $this->style( $b['style'] )
+			$a[10] => $this->style( $b['style'] )
 		);
 		
 		foreach ( $args as $k => $v ):

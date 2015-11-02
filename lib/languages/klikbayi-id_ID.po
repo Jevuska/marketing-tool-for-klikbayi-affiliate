@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Klik Bayi v1.0.1\n"
+"Project-Id-Version: Klik Bayi v1.0.2\n"
 "Report-Msgid-Bugs-To: Klik Bayi <contact@klikbayi.com>\n"
-"POT-Creation-Date: 2015-10-26 06:00+0800\n"
+"POT-Creation-Date: 2015-11-02 17:14+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Klik Bayi <contact@klikbayi.com>\n"
@@ -46,11 +46,11 @@ msgstr "Pengaturan"
 msgid "Affiliate Login"
 msgstr "Login Afiliasi"
 
-#: inc/class/class-klikbayi-admin.php:113
+#: inc/class/class-klikbayi-admin.php:114
 msgid "Overview"
 msgstr "Ulasan"
 
-#: inc/class/class-klikbayi-admin.php:114
+#: inc/class/class-klikbayi-admin.php:115
 msgid ""
 "This plugin is especially designed to give KlikBayi.com&#39;s affiliates "
 "freedom to place the order button/form order (with its affiliate ID "
@@ -69,11 +69,11 @@ msgstr ""
 "memberikan keterangan yang diperlukan yang diperlukan untuk produk KlikBayi."
 "com ini."
 
-#: inc/class/class-klikbayi-admin.php:117
+#: inc/class/class-klikbayi-admin.php:118
 msgid "Troubleshooting"
 msgstr "Penyelesaian masalah"
 
-#: inc/class/class-klikbayi-admin.php:118
+#: inc/class/class-klikbayi-admin.php:119
 msgid ""
 "If you get an error, try to deactivate or uninstall the plugin and activate "
 "it again."
@@ -81,11 +81,11 @@ msgstr ""
 "Jika Anda mendapatkan kode kesalahan, cobalah untuk menonaktifkan atau "
 "menghapus plugin dan mengaktifkannya kembali."
 
-#: inc/class/class-klikbayi-admin.php:121
+#: inc/class/class-klikbayi-admin.php:122
 msgid "FAQ"
 msgstr "FAQ"
 
-#: inc/class/class-klikbayi-admin.php:123
+#: inc/class/class-klikbayi-admin.php:124
 msgid ""
 "<h4>How do I setup my WordPress theme to work with Klik Bayi plugin?</"
 "h4><p>You can use php code <code>&lt;?php do_action(&#39;klikbayi&#39;); ?"
@@ -98,16 +98,16 @@ msgstr ""
 "baris kode the_content. Halaman tunggal atau seluruh situs dipersilahkan. "
 "Kode lainnya juga tersedia.</p>"
 
-#: inc/class/class-klikbayi-admin.php:136
-#: inc/class/class-klikbayi-admin.php:160
+#: inc/class/class-klikbayi-admin.php:137
+#: inc/class/class-klikbayi-admin.php:161
 msgid "Marketing Tool for KlikBayi Affiliate"
 msgstr "Alat Pemasaran untuk Afiliasi KlikBayi"
 
-#: inc/class/class-klikbayi-admin.php:137
+#: inc/class/class-klikbayi-admin.php:138
 msgid "KlikBayi Affiliate"
 msgstr "Afiliasi KlikBayi"
 
-#: inc/class/class-klikbayi-admin.php:161
+#: inc/class/class-klikbayi-admin.php:162
 msgid ""
 "Marketing plugin for KlikBayi affiliate. The killers plugin for KlikBayi."
 "com&#39;s product."
@@ -115,39 +115,36 @@ msgstr ""
 "Plugin pemasaran untuk afiliasi KlikBayi.  The killers plugin untuk produk "
 "KlikBayi.com."
 
-#: inc/class/class-klikbayi-admin.php:234
+#: inc/class/class-klikbayi-admin.php:235
 msgid "Activate"
 msgstr "Aktifkan"
 
-#: inc/class/class-klikbayi-admin.php:242
-msgid "Save Changes"
-msgstr "Simpan Perubahan"
-
-#: inc/class/class-klikbayi-admin.php:245
+#: inc/class/class-klikbayi-admin.php:243
+#: inc/class/class-klikbayi-admin.php:261
 msgid "Reset"
 msgstr "Atur Kembali"
 
-#: inc/class/class-klikbayi-admin.php:258
+#: inc/class/class-klikbayi-admin.php:246
+msgid "Save Changes"
+msgstr "Simpan Perubahan"
+
+#: inc/class/class-klikbayi-admin.php:264
 msgid "Generate Code"
 msgstr "Hasilkan Kode"
 
-#: inc/class/class-klikbayi-admin.php:265
-#: inc/class/class-klikbayi-admin.php:384
+#: inc/class/class-klikbayi-admin.php:275
+#: inc/class/class-klikbayi-admin.php:401
 msgid "Shortcode result: add into post area or text widget."
 msgstr "Hasil shortcode: tambahkan ke dalam postingan atau widget teks."
 
-#: inc/class/class-klikbayi-admin.php:267
-#: inc/class/class-klikbayi-admin.php:385
+#: inc/class/class-klikbayi-admin.php:277
+#: inc/class/class-klikbayi-admin.php:402
 msgid ""
 "PHP Code result: add into your current theme. Use opening and closing php "
 "tags if this code not surrounding other php code."
 msgstr ""
 "Hasil kode PHP: tambahkan ke template Anda. Gunakan tag pembuka dan penutup "
 "php apabila kode ini tidak dilingkupi kode php lain."
-
-#: inc/class/class-klikbayi-admin.php:284
-msgid "Success to reset your data."
-msgstr "Berhasil mengatur kembali data Anda."
 
 #: inc/class/class-klikbayi-admin.php:295
 msgid "Your affiliate ID still empty. Try to add yours."
@@ -161,40 +158,44 @@ msgstr "Affiliate ID Anda sudah ditambahkan."
 msgid "Success to add your affiliate ID."
 msgstr "Sukses menambahkan ID afiliasi."
 
-#: inc/class/class-klikbayi-admin.php:348
+#: inc/class/class-klikbayi-admin.php:325
+msgid "Success to reset your data."
+msgstr "Berhasil mengatur kembali data Anda."
+
+#: inc/class/class-klikbayi-admin.php:363
 msgid "For more information:"
 msgstr "Untuk informasi lanjut:"
 
-#: inc/class/class-klikbayi-admin.php:348
+#: inc/class/class-klikbayi-admin.php:363
 msgid "Plugin Page"
 msgstr "Halaman Plugin"
 
-#: inc/class/class-klikbayi-admin.php:358
+#: inc/class/class-klikbayi-admin.php:375
 msgid "You need to add your KlikBayi.Com&#39;s affiliate ID first."
 msgstr ""
 "Untuk mengaktifkan plugin, silahkan tambahkan ID (username) afiliasi Anda."
 
-#: inc/class/class-klikbayi-admin.php:364
+#: inc/class/class-klikbayi-admin.php:381
 msgid "General settings of form order."
 msgstr "Pengaturan form pemesanan."
 
-#: inc/class/class-klikbayi-admin.php:375
+#: inc/class/class-klikbayi-admin.php:392
 msgid "Shortcode of form order."
 msgstr "Shortcode form pemesanan."
 
-#: inc/class/class-klikbayi-admin.php:376
+#: inc/class/class-klikbayi-admin.php:393
 msgid "Main Shortcode"
 msgstr "Shortcode Utama"
 
-#: inc/class/class-klikbayi-admin.php:378
+#: inc/class/class-klikbayi-admin.php:395
 msgid "With parameters"
 msgstr "Dengan parameter"
 
-#: inc/class/class-klikbayi-admin.php:379
+#: inc/class/class-klikbayi-admin.php:396
 msgid "PHP Code for template:"
 msgstr "Kode PHP untuk template:"
 
-#: inc/class/class-klikbayi-admin.php:380
+#: inc/class/class-klikbayi-admin.php:397
 msgid ""
 "USAGE: Shortcode and PHP Code for theme is available. Select your "
 "parameters, Choose option values, and push Generate Code button. Add your "
@@ -204,15 +205,15 @@ msgstr ""
 "Anda, tentukan nilai (value) lalu klik tombol Generate Code. Tambahkan kode "
 "ke dalam postingan, widget atau template secara langsung."
 
-#: inc/class/class-klikbayi-admin.php:383
+#: inc/class/class-klikbayi-admin.php:400
 msgid "Generate Shortcode"
 msgstr "Hasilkan Kode"
 
-#: inc/class/class-klikbayi-admin.php:398
+#: inc/class/class-klikbayi-admin.php:415
 msgid "Contact Page"
 msgstr "Halaman Kontak"
 
-#: inc/class/class-klikbayi-admin.php:401
+#: inc/class/class-klikbayi-admin.php:419
 #, php-format
 msgid ""
 "<p><img src=\"%1$s\"><i class=\"%2$s\">Book of  KlikBayi.Com.</i></p><p "
@@ -224,19 +225,19 @@ msgstr ""
 "\"%3$s\"> &#126; by dr. Eiyta Ardinasari</p><p class=\"%3$s\">Kontak Kami <i "
 "class=\"%4$s\"></i> <a href=\"%5$s\" title=\"%6$s\">%7$s</a></p>"
 
-#: inc/class/class-klikbayi-admin.php:432
+#: inc/class/class-klikbayi-admin.php:451
 msgid "Uncheck to hide."
 msgstr "Hilangkan centang untuk menyembunyikan."
 
-#: inc/class/class-klikbayi-admin.php:440
+#: inc/class/class-klikbayi-admin.php:461
 msgid "Include Post ID, separate them by comma."
 msgstr "ID Postingan yang hanya diikutkan, pisahkan dengan tanda koma."
 
-#: inc/class/class-klikbayi-admin.php:447
+#: inc/class/class-klikbayi-admin.php:468
 msgid "Exclude Post ID, separate them by comma."
 msgstr "ID Postingan yang dikecualikan, pisahkan dengan tanda koma"
 
-#: inc/class/class-klikbayi-admin.php:456
+#: inc/class/class-klikbayi-admin.php:476
 #, php-format
 msgid ""
 "Affiliate ID is your KlikBayi.Com&#39;s affiliate login or username.<br/"
@@ -247,135 +248,143 @@ msgstr ""
 "mendaftar afiliasi pertama kali. Belum punya ID (username)? Silahkan <a "
 "target=\"_blank\" href=\"%s/affiliasi.php\">Daftar Afiliasi</a>."
 
-#: inc/class/class-klikbayi-admin.php:468
+#: inc/class/class-klikbayi-admin.php:488
 msgid "Make sure its your affiliate ID."
 msgstr "Pastikan user ID afiliasi Anda sudah benar."
 
-#: inc/class/class-klikbayi-admin.php:484
+#: inc/class/class-klikbayi-admin.php:503
 msgid "Change the form title or leave empty to hide it."
 msgstr "Ganti judul form atau biarkan kosong untuk menyembunyikan."
 
-#: inc/class/class-klikbayi-admin.php:491
+#: inc/class/class-klikbayi-admin.php:509
 msgid "Change the button text"
 msgstr "Ganti tulisan tombol"
 
-#: inc/class/class-klikbayi-admin.php:498
+#: inc/class/class-klikbayi-admin.php:515
 msgid "Set size in pixel or percent. 0 for unset."
 msgstr "Atur ukuran dalam piksel atau persen. 0 untuk tidak merubah."
 
-#: inc/class/class-klikbayi-admin.php:505
+#: inc/class/class-klikbayi-admin.php:522
 msgid "Width"
 msgstr "Lebar"
 
-#: inc/class/class-klikbayi-admin.php:506
+#: inc/class/class-klikbayi-admin.php:523
 msgid "Height"
 msgstr "Tinggi"
 
-#: inc/class/class-klikbayi-admin.php:598
+#: inc/class/class-klikbayi-admin.php:626
 msgid "No items"
 msgstr "Tidak ada item"
 
-#: inc/class/class-klikbayi-admin.php:613
+#: inc/class/class-klikbayi-admin.php:641
 msgid "Feed"
 msgstr "Feed"
 
-#: inc/class/class-klikbayi-admin.php:648
+#: inc/class/class-klikbayi-admin.php:676
 msgid "Plugin Activated"
 msgstr "Plugin Aktif"
 
-#: inc/class/class-klikbayi-admin.php:649
+#: inc/class/class-klikbayi-admin.php:677
 msgid "General Settings"
 msgstr "Pengaturan Umum"
 
-#: inc/class/class-klikbayi-admin.php:650
+#: inc/class/class-klikbayi-admin.php:678
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: inc/class/class-klikbayi-admin.php:651
+#: inc/class/class-klikbayi-admin.php:679
 msgid "Update News"
 msgstr "Info Terbaru"
 
-#: inc/class/class-klikbayi-admin.php:659
+#: inc/class/class-klikbayi-admin.php:687
 msgid "Add Your Affiliate ID"
 msgstr "Tambahkan ID (username) Afiliasi"
 
-#: inc/class/class-klikbayi-admin.php:666
+#: inc/class/class-klikbayi-admin.php:695
 msgid "Show Under Post"
 msgstr "Tampilkan di bawah postingan"
 
-#: inc/class/class-klikbayi-admin.php:667
+#: inc/class/class-klikbayi-admin.php:696
 msgid "Include Post"
 msgstr "Tampilkan hanya ID Postingan ini"
 
-#: inc/class/class-klikbayi-admin.php:668
+#: inc/class/class-klikbayi-admin.php:697
 msgid "Exclude Post"
 msgstr "Mengecualikan ID postingan ini"
 
-#: inc/class/class-klikbayi-admin.php:669
+#: inc/class/class-klikbayi-admin.php:698
 msgid "Affiliate ID"
 msgstr "ID Affiliasi"
 
-#: inc/class/class-klikbayi-admin.php:670
-#: inc/class/class-klikbayi-widget.php:118
+#: inc/class/class-klikbayi-admin.php:699
+#: inc/class/class-klikbayi-widget.php:130
 msgid "Form Order Type"
 msgstr "Jenis Form Order"
 
-#: inc/class/class-klikbayi-admin.php:671
-#: inc/class/class-klikbayi-widget.php:130
+#: inc/class/class-klikbayi-admin.php:700
+#: inc/class/class-klikbayi-widget.php:147
 msgid "Form Title"
 msgstr "Judul Form"
 
-#: inc/class/class-klikbayi-admin.php:672
-#: inc/class/class-klikbayi-widget.php:135
+#: inc/class/class-klikbayi-admin.php:701
+#: inc/class/class-klikbayi-widget.php:154
 msgid "Button Text"
 msgstr "Tulisan Tombol"
 
-#: inc/class/class-klikbayi-admin.php:673
+#: inc/class/class-klikbayi-admin.php:702
 msgid "Form Size"
 msgstr "Ukuran Form"
 
-#: inc/class/class-klikbayi-admin.php:674
+#: inc/class/class-klikbayi-admin.php:703
 msgid "Form Style"
 msgstr "Model Form"
 
-#: inc/class/class-klikbayi-admin.php:706
+#: inc/class/class-klikbayi-admin.php:737
 msgid "Error"
 msgstr "Error"
 
-#: inc/class/class-klikbayi-admin.php:723
+#: inc/class/class-klikbayi-admin.php:738
+msgid "OK"
+msgstr "OK"
+
+#: inc/class/class-klikbayi-admin.php:739
+msgid "empty"
+msgstr "kosong"
+
+#: inc/class/class-klikbayi-admin.php:757
 msgid "plugin by"
 msgstr "plugin oleh"
 
-#: inc/class/class-klikbayi-admin.php:733
+#: inc/class/class-klikbayi-admin.php:767
 msgid "Version"
 msgstr "Versi"
 
-#: inc/class/class-klikbayi-admin.php:793
-#: inc/class/class-klikbayi-admin.php:801
+#: inc/class/class-klikbayi-admin.php:825
+#: inc/class/class-klikbayi-admin.php:833
 msgid "null"
 msgstr "kosong"
 
-#: inc/class/class-klikbayi-admin.php:795
+#: inc/class/class-klikbayi-admin.php:827
 msgid "Include post ID."
 msgstr "Tampilkan hanya ID Postingan ini"
 
-#: inc/class/class-klikbayi-admin.php:803
+#: inc/class/class-klikbayi-admin.php:835
 msgid "Exclude post ID."
 msgstr "Mengecualikan ID postingan ini."
 
-#: inc/class/class-klikbayi-admin.php:811
+#: inc/class/class-klikbayi-admin.php:843
 msgid "Choose your type."
 msgstr "Pilih tipe yang Anda inginkan."
 
-#: inc/class/class-klikbayi-admin.php:819
+#: inc/class/class-klikbayi-admin.php:851
 msgid "Change the text. Leave empty to hide."
 msgstr "Mengganti teks. Biarkan kosong untuk menyembunyikan."
 
-#: inc/class/class-klikbayi-admin.php:827
+#: inc/class/class-klikbayi-admin.php:859
 msgid "Change the text."
 msgstr "Mengganti teks."
 
-#: inc/class/class-klikbayi-admin.php:835
+#: inc/class/class-klikbayi-admin.php:867
 msgid ""
 "Form size: ( width, height, unit) px or %. Unit is unset for popup for/"
 "button type. Default i pixels."
@@ -383,76 +392,79 @@ msgstr ""
 "Ukuran form: ( width, height, unit) px or %. Unit is unset for popup for/"
 "button type. Default i pixels."
 
-#: inc/class/class-klikbayi-admin.php:842
+#: inc/class/class-klikbayi-admin.php:874
 msgid "Form Style."
 msgstr "Model Form."
 
-#: inc/class/class-klikbayi-admin.php:859
+#: inc/class/class-klikbayi-admin.php:892
 msgid "Parameter"
 msgstr "Parameter"
 
-#: inc/class/class-klikbayi-admin.php:860
+#: inc/class/class-klikbayi-admin.php:893
 msgid "Default"
 msgstr "Default"
 
-#: inc/class/class-klikbayi-admin.php:861
+#: inc/class/class-klikbayi-admin.php:894
 msgid "Option Value"
 msgstr "Pilihan Value"
 
-#: inc/class/class-klikbayi-admin.php:862
+#: inc/class/class-klikbayi-admin.php:895
 msgid "Description"
 msgstr "Deskripsi"
 
-#: inc/class/class-klikbayi-sanitize.php:170
-#: inc/class/class-klikbayi-widget.php:91
+#: inc/class/class-klikbayi-sanitize.php:198
+#: inc/class/class-klikbayi-widget.php:94
 msgid "Form Order"
 msgstr "Form Pemesanan"
 
-#: inc/class/class-klikbayi-sanitize.php:171
-#: inc/class/class-klikbayi-widget.php:92
+#: inc/class/class-klikbayi-sanitize.php:199
+#: inc/class/class-klikbayi-widget.php:95
 msgid "Order"
 msgstr "Pesan"
 
-#: inc/class/class-klikbayi-widget.php:86
+#: inc/class/class-klikbayi-widget.php:89
 msgid "KlikBayi.Com&#39;s Product"
 msgstr "Produk KlikBayi.Com"
 
-#: inc/class/class-klikbayi-widget.php:99
+#: inc/class/class-klikbayi-widget.php:102
 msgid "Title"
 msgstr "Judul"
 
-#: inc/class/class-klikbayi-widget.php:104
+#: inc/class/class-klikbayi-widget.php:109
 msgid "Additional Text (HTML allowed)"
 msgstr "Teks tambahan (Kode HTML dibolehkan)"
 
-#: inc/class/class-klikbayi-widget.php:108
+#: inc/class/class-klikbayi-widget.php:116
 msgid "Include Post ID (separate them by comma)"
 msgstr "ID Postingan yang hanya diikutkan (pisahkan dengan tanda koma)"
 
-#: inc/class/class-klikbayi-widget.php:114
-msgid "Exclude Post ID (separate them by comma)"
-msgstr "ID Postingan yang dikecualikan (pisahkan dengan tanda koma)"
+#: inc/class/class-klikbayi-widget.php:123
+msgid "Exclude Post ID ( separate them by comma )"
+msgstr "ID Postingan yang dikecualikan, pisahkan dengan tanda koma"
 
-#: inc/class/class-klikbayi-widget.php:137
+#: inc/class/class-klikbayi-widget.php:161
 msgid "Form Order Style"
 msgstr "Tampilan Form Pemesanan"
 
-#: inc/load/functions.php:256
+#: inc/load/functions.php:282
 msgid "Full Name"
 msgstr "Nama Lengkap"
 
-#: inc/load/functions.php:257
+#: inc/load/functions.php:283
 msgid "Email"
 msgstr "Alamat Email"
 
-#: inc/load/functions.php:258
+#: inc/load/functions.php:284
 msgid "Shipping Address &amp; Zip Code"
 msgstr "Alamat Pengiriman &amp; Kodepos"
 
-#: inc/load/functions.php:259
+#: inc/load/functions.php:285
 msgid "City &amp; Province"
 msgstr "Kota &amp; Propinsi"
 
-#: inc/load/functions.php:260
+#: inc/load/functions.php:286
 msgid "Mobile Phone"
 msgstr "Nomor Handphone"
+
+#~ msgid "Exclude Post ID (separate them by comma)"
+#~ msgstr "ID Postingan yang dikecualikan (pisahkan dengan tanda koma)"
