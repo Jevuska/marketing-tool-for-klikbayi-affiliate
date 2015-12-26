@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Klik Bayi v1.0.2\n"
 "Report-Msgid-Bugs-To: Klik Bayi <contact@klikbayi.com>\n"
-"POT-Creation-Date: 2015-11-02 17:14+0800\n"
+"POT-Creation-Date: 2015-12-22 12:31+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Klik Bayi <contact@klikbayi.com>\n"
@@ -446,23 +446,23 @@ msgstr "ID Postingan yang dikecualikan, pisahkan dengan tanda koma"
 msgid "Form Order Style"
 msgstr "Tampilan Form Pemesanan"
 
-#: inc/load/functions.php:282
+#: inc/load/functions.php:281
 msgid "Full Name"
 msgstr "Nama Lengkap"
 
-#: inc/load/functions.php:283
+#: inc/load/functions.php:282
 msgid "Email"
 msgstr "Alamat Email"
 
-#: inc/load/functions.php:284
+#: inc/load/functions.php:283
 msgid "Shipping Address &amp; Zip Code"
 msgstr "Alamat Pengiriman &amp; Kodepos"
 
-#: inc/load/functions.php:285
+#: inc/load/functions.php:284
 msgid "City &amp; Province"
 msgstr "Kota &amp; Propinsi"
 
-#: inc/load/functions.php:286
+#: inc/load/functions.php:285
 msgid "Mobile Phone"
 msgstr "Nomor Handphone"
 

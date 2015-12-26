@@ -56,6 +56,9 @@ class KLIKBAYI_Load
 	
 	public function load_file()
 	{
+		if ( is_admin() && current_user_can( 'manage_options' ) )
+			do_action( 'load-klikbayi-admin-page' );
+		
 		foreach ( glob( KLIKBAYI_PATH_LIB . 'inc/load/*.php' ) as $file )
 			include_once $file;
 	}

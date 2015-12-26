@@ -26,12 +26,9 @@ class KLIKBAYI_Sanitize
 	public function domain( $string )
 	{
 		$d = '';
-		
 		$string = esc_html( $string );
 		if ( false === strpos( $string, base64_decode( $this->source ) ) )
-		{
 			return $d;
-		}
 		return strtolower( $string );
 	}
 	
@@ -44,8 +41,7 @@ class KLIKBAYI_Sanitize
 		else
 			$arr = ( '' != $list ) ? explode( ',', $list ) : array();
 		
-		if ( array_filter( $arr ) )
-		{
+		if ( array_filter( $arr ) ) :
 			foreach ( array_unique( $arr ) as $post_id ) :
 				$post_id = absint( $post_id );
 				
@@ -58,7 +54,8 @@ class KLIKBAYI_Sanitize
 			
 			if ( array_filter( $result ) )
 				$result = array_values( array_unique( $result ) );
-		}
+		endif;
+		
 		return $result;
 	}
 	
@@ -68,26 +65,24 @@ class KLIKBAYI_Sanitize
 		
 		if ( '' == $lists )
 			return $list;
-
-		$result = array();
-		if ( is_array( $lists ) )
-		{
-			foreach ( $lists as $id )
-			{
+		
+		if ( is_array( $lists ) ) :
+			$result = array();
+			foreach ( $lists as $id ) :
 				$id = absint( $id );
 				
-				if ( '' == $id )
+				if ( 0 == $id )
 					continue;
 				
 				$result[] = $id;
-			}
-			if ( array_filter( $result ) )
+			endforeach;
+			
+			if ( array_filter( $result ) ) :
 				$list = implode( ',', array_values( array_unique( $result ) ) );
-		}
-		else
-		{
+			endif;
+		else :
 			$list = array( $lists );
-		}
+		endif;
 		
 		return esc_textarea( $list );
 	}
@@ -132,6 +127,13 @@ class KLIKBAYI_Sanitize
 		return sanitize_key( $_style );
 	}
 	
+	public function editor( $text )
+	{
+		if ( isset( $text['content'] ) )
+			return array( 'content' => $text['content'] );
+		return array( 'content' => $text );
+	}
+	
 	public function type_array()
 	{
 		$type = array(
@@ -174,7 +176,8 @@ class KLIKBAYI_Sanitize
 			$a[7]  => sanitize_text_field( $b['form_title'] ),	
 			$a[8]  => sanitize_text_field( $b['button_text'] ),
 			$a[9]  => $this->size( $b['size'] ),
-			$a[10] => $this->style( $b['style'] )
+			$a[10] => $this->style( $b['style'] ),
+			$a[11] => $this->editor( $b['editor'] )
 		);
 		
 		foreach ( $args as $k => $v ):
@@ -202,7 +205,8 @@ class KLIKBAYI_Sanitize
 				(int) 0,
 				'px'
 			),
-			'style'       => 'inline'
+			'style'       => 'inline',
+			'editor'      => array( 'content' => '' )
 		);
 		return $args;
 	}

@@ -2,7 +2,7 @@
 Contributors: Jevuska
 Donate link: http://www.jevuska.com/donate/
 Requires at least: 4.0
-Tested up to: 4.3
+Tested up to: 4.4
 License: GPLv3
 ---
 
@@ -30,6 +30,11 @@ This plugin show the tool feature that embeded into your site automatically, and
 ![screenshot 3](lib/assets/img/screenshot-3.jpg)
 
 ## Changelog
+* 1.0.3 = December 27, 2015
+ * Fixes HTML form.
+ * Add `wp_editor` on admin panel.
+ * Test up to WP v4.4.
+ 
 * 1.0.2 = November 02, 2015
  * Fixes sanitize input field on settings and widget
  * Add input text field on `form_title` and `button_text` shortcode

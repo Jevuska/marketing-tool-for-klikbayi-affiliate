@@ -561,6 +561,35 @@ class KLIKBAYI_Admin
 		endforeach;
 	}
 	
+	public function editor_cb()
+	{		
+		$this->wp_editor();
+	}
+	
+	public function wp_editor()
+	{
+		global $wp_version;
+		
+		$content = ( isset( $this->options['editor']['content'] ) ) ? $this->options['editor']['content'] : '';
+		
+		$settings = array(
+			'textarea_name' => 'klikbayi_option[editor][content]',
+			'textarea_rows' => 5
+		);
+		
+		if ( $wp_version >= 3.3 && function_exists( 'wp_editor' ) ) :
+			ob_start();
+			wp_editor( $content, 'form_editor', $settings );
+			$html = ob_get_clean();
+		else :
+			$html = '<textarea id="form_editor" name="klikbayi_option[editor][content]" rows="5">' . esc_textarea( stripslashes( $content ) ) . '</textarea>';
+		endif;
+		
+		$html .= '<label for="form_editor"><p class="description">' . __( 'Content before form.', 'klikbayi' ) . '</p></label>';
+		
+		echo $html;
+	}
+	
 	protected function input( $type, $description, $inputtype )
 	{
 		$required = '';
@@ -700,7 +729,8 @@ class KLIKBAYI_Admin
 			'form_title'   => __( 'Form Title', 'klikbayi' ),
 			'button_text'  => __( 'Button Text', 'klikbayi' ),
 			'size'         => __( 'Form Size', 'klikbayi' ),
-			'style'        => __( 'Form Style', 'klikbayi' )
+			'style'        => __( 'Form Style', 'klikbayi' ),
+			'editor'       => __( 'Form Content', 'klikbayi' )
 		);
 		return $general_array;
 	}
@@ -930,8 +960,6 @@ class Klik_Bayi_Shortcode_Table extends WP_List_Table
         }
     }
 	
-	
-		
 	private function sort_data( $a, $b )
     {
         $orderby = 'id';

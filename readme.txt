@@ -3,8 +3,8 @@ Contributors: Jevuska
 Donate link: http://www.jevuska.com/donate/
 Tags: widget, shortcode, sidebar, form, klikbayi, affiliate, order, onlineshop, kid, children, book, popup, marketing
 Requires at least: 4.0
-Tested up to: 4.3
-Stable tag: 1.0.2
+Tested up to: 4.4
+Stable tag: 1.0.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +29,11 @@ This plugin show the tool feature that embeded into your site automatically, and
 3. KlikBayi Widget.
 
 == Changelog ==
+* 1.0.3 = December 27, 2015
+ * Fixes HTML form.
+ * Add `wp_editor` on admin panel.
+ * Test up to WP v4.4.
+ 
 * 1.0.2 = November 02, 2015
  * Fixes sanitize input field on settings and widget
  * Add input text field on `form_title` and `button_text` shortcode

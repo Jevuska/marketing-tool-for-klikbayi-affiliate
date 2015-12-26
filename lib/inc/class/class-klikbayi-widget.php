@@ -26,31 +26,27 @@ class KlikBayiWidget extends WP_Widget
 
 	function widget( $args, $instance )
 	{
-		extract( $args );
-
 		$a = $this->validate->sanitize( $instance );
 		
-		$result = klikbayi_create_html( $a['type'], $a['form_title'], $a['button_text'], "0,0,px", $a['style'],  $a['post__in'] , $a['post__not_in'], 'shortcode');
+		$result = klikbayi_create_html( $a['type'], $a['form_title'], $a['button_text'], $size = '0,0,px', $a['style'],  $a['post__in'] , $a['post__not_in'], $content = null, 'shortcode' );
 		
-		$title = apply_filters( 'widget_title', $instance['title'] );
-
-		echo $before_widget;
-		echo '<div class="widget_form_klikbayi">';
-		if ( $title && '' != $result ) 
-		{
-		  echo $before_title . $title . $after_title;
-		}
-		
-		if( '' != $instance['textarea'] && '' != $result )
-		{
-			printf ( '<p class="klikbayi_textarea">%1$s</p>',
-				$instance['textarea']
-			);
-		}
-		
-		echo $result;
-		echo '</div>';
-		echo $after_widget;
+		if ( ! empty( $result ) ) :
+			$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+			
+			echo $args['before_widget'];
+			echo '<div class="widget_form_klikbayi">';
+			if ( $title ) 
+			  echo $args['before_title'] . $title . $args['after_title'];
+			
+			if( '' != $instance['textarea'] )
+				printf ( '<p class="klikbayi_textarea">%1$s</p>',
+					$instance['textarea']
+				);
+			
+			echo $result;
+			echo '</div>';
+			echo $args['after_widget'];
+		endif;
 	}
 
 	function update( $new_instance, $old_instance )
@@ -70,8 +66,8 @@ class KlikBayiWidget extends WP_Widget
 
 	function form( $instance )
 	{
-		if( $instance ) 
-		{
+		if ( $instance )  :
+		
 			$title        = sanitize_text_field( $instance['title'] );
 			$textarea     = $instance['textarea'];
 			$post__in     = $this->validate->create_list_post_ids(  $instance['post__in'] );
@@ -81,20 +77,21 @@ class KlikBayiWidget extends WP_Widget
 			$text         = sanitize_text_field( $instance['button_text'] );
 			$style        = $this->validate->style( $instance['style'] );
 			 
-		} else {
+		else :
 			
-			$book_cover_src      = KLIKBAYI_PLUGIN_URL . 'lib/assets/img/klikbayi-cover-book.jpg';
+			$book_cover_src = KLIKBAYI_PLUGIN_URL . 'lib/assets/img/klikbayi-cover-book.jpg';
 			$book_cover_img = sprintf( '<img src="%s">', esc_url_raw( $book_cover_src ) );
 
-			$title        = __( 'KlikBayi.Com&#39;s Product', 'klikbayi' );
-			$textarea     = $book_cover_img;
-			$post__in     = '';
-			$post__not_in = '';
-			$type         = 'form';
-			$form_title   = __( 'Form Order', 'klikbayi' );
-			$text         = __( 'Order', 'klikbayi' );
-			$style        = 'inline';
-		}
+			$title          = __( 'KlikBayi.Com&#39;s Product', 'klikbayi' );
+			$textarea       = $book_cover_img;
+			$post__in       = '';
+			$post__not_in   = '';
+			$type           = 'form';
+			$form_title     = __( 'Form Order', 'klikbayi' );
+			$text           = __( 'Order', 'klikbayi' );
+			$style          = 'inline';
+			
+		endif;
 		
 		printf( '<p><label for="%1$s">%2$s</label><input class="widefat" id="%1$s" name="%3$s" type="text" value="%4$s" />
 		</p>',
@@ -131,11 +128,11 @@ class KlikBayiWidget extends WP_Widget
 		);
 		
 		foreach ( $this->type as $t ):
-			$selected = ( $type == $t ) ? 'checked="checked"' : '';
-			printf( '<label for="type-%1$s"><input type="radio" id="type-%1$s" name="%2$s" value="%1$s" %3$s/> <span>%4$s</span></label>',
+			$checked = checked( $type, $t, false );
+			printf( '<label for="type-%1$s"><input type="radio" id="type-%1$s" name="%2$s" value="%1$s" %3$s /> <span>%4$s</span> </label>',
 				sanitize_key( $t ),
 				$this->get_field_name( 'type' ),
-				$selected,
+				$checked,
 				ucwords( esc_html( $t ) )
 			);
 		endforeach;
@@ -162,17 +159,16 @@ class KlikBayiWidget extends WP_Widget
 		);
 		
 		foreach ( $this->style as $t ):
-			$selected = ( $style == $t ) ? 'checked="checked"' : '';
-			printf( '<label for="style-%1$s"><input type="radio" id="style-%1$s" name="%2$s" value="%1$s" %3$s/> <span>%4$s</span></label> ',
+			$checked = checked( $style, $t, false );
+			printf( '<label for="style-%1$s"><input type="radio" id="style-%1$s" name="%2$s" value="%1$s" %3$s /> <span>%4$s</span></label> ',
 				sanitize_key( $t ),
 				$this->get_field_name( 'style' ),
-				$selected,
+				$checked,
 				ucwords( esc_attr( $t ) )
 			);
 		endforeach;
 		
 		printf( '</p>');
-		
 	}
 }
 
@@ -180,7 +176,7 @@ function klikbayi_register_widgets()
 {
 	global $klikbayi_settings;
 	
-	if ( isset( $klikbayi_settings['aff'] ) && '' != $klikbayi_settings['aff'] )
+	if ( isset( $klikbayi_settings['aff'] ) && '' != sanitize_key( $klikbayi_settings['aff'] ) )
 		register_widget( 'KlikBayiWidget' );
 	else
 		return;

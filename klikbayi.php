@@ -3,7 +3,7 @@
 Plugin Name: Marketing Tool for KlikBayi Affiliate
 Plugin URI: https://github.com/Jevuska/marketing-tool-for-klikbayi-affiliate
 Description: Marketing plugin for KlikBayi affiliate. The easy way to selling <a href="http://klikbayi.com/">KlikBayi.com's</a> product.
-Version: 1.0.2
+Version: 1.0.3
 Author: Jevuska
 Author URI: http://www.jevuska.com
 License: GPL3
@@ -52,7 +52,7 @@ if ( ! class_exists( 'Klik_Bayi' ) ):
 		public function setup_constants()
 		{
 			if ( ! defined( 'KLIKBAYI_PLUGIN_VERSION' ) )
-				define( 'KLIKBAYI_PLUGIN_VERSION', '1.0.2' );
+				define( 'KLIKBAYI_PLUGIN_VERSION', '1.0.3' );
 			
 			if ( ! defined( 'KLIKBAYI_PLUGIN_FILE' ) )
 				define( 'KLIKBAYI_PLUGIN_FILE', __FILE__ );
@@ -91,31 +91,28 @@ if ( ! class_exists( 'Klik_Bayi' ) ):
 					require_once( KLIKBAYI_PATH_LIB . 'inc/admin-function.php' );
 					require_once( KLIKBAYI_PATH_LIB . 'inc/class/class-klikbayi-admin.php' );
 					require_once( KLIKBAYI_PATH_LIB . 'inc/class/class-klikbayi-setup.php' );
-					do_action( 'load-klikbayi-admin-page' );
 				endif;
-			else:
 			endif;
 			require_once( KLIKBAYI_PATH_LIB . 'install.php' );
-			
 		}
 		
 		public function load_textdomain()
 		{
-			$domain          = 'klikbayi';
+			$domain            = 'klikbayi';
 			$klikbayi_lang_dir = KLIKBAYI_PATH_LIB . 'languages/';
 			$klikbayi_lang_dir = apply_filters( 'klikbayi_languages_directory', $klikbayi_lang_dir );
-			$locale          = apply_filters( 'plugin_locale', get_locale(), $domain );
-			$mofile          = sprintf( '%1$s-%2$s.mo', $domain, $locale );
-			$mofile_local    = $klikbayi_lang_dir . $mofile;
-			$mofile_global   = trailingslashit( WP_LANG_DIR ) . $domain . '/' . $mofile;
+			$klikbayi_lang_dir = wp_normalize_path( $klikbayi_lang_dir );
+			$locale            = apply_filters( 'plugin_locale', get_locale(), $domain );
+			$mofile            = sprintf( '%1$s-%2$s.mo', $domain, $locale );
+			$mofile_local      = $klikbayi_lang_dir . sanitize_file_name( $mofile );
+			$mofile_global     = trailingslashit( WP_LANG_DIR ) . trailingslashit( $domain ) . sanitize_file_name( $mofile );
 			
-			if ( file_exists( $mofile_global ) ) {
+			if ( file_exists( $mofile_global ) )
 				load_textdomain( $domain, $mofile_global );
-			} elseif ( file_exists( $mofile_local ) ) {
+			elseif ( file_exists( $mofile_local ) )
 				load_textdomain( $domain, $mofile_local );
-			} else {
+			else
 				load_plugin_textdomain( $domain, false, $klikbayi_lang_dir );
-			}
 		}
 	}
 endif;

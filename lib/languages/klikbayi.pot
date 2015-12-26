@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Klik Bayi v1.0.2\n"
-"POT-Creation-Date: 2015-11-02 17:13+0800\n"
+"POT-Creation-Date: 2015-12-22 12:30+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klik Bayi <contact@klikbayi.com>\n"
 "Language-Team: Klik Bayi <contact@klikbayi.com>\n"
@@ -385,22 +385,22 @@ msgstr ""
 msgid "Form Order Style"
 msgstr ""
 
-#: inc/load/functions.php:282
+#: inc/load/functions.php:281
 msgid "Full Name"
 msgstr ""
 
-#: inc/load/functions.php:283
+#: inc/load/functions.php:282
 msgid "Email"
 msgstr ""
 
-#: inc/load/functions.php:284
+#: inc/load/functions.php:283
 msgid "Shipping Address &amp; Zip Code"
 msgstr ""
 
-#: inc/load/functions.php:285
+#: inc/load/functions.php:284
 msgid "City &amp; Province"
 msgstr ""
 
-#: inc/load/functions.php:286
+#: inc/load/functions.php:285
 msgid "Mobile Phone"
 msgstr ""
